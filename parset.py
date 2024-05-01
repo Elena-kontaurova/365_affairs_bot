@@ -1,14 +1,18 @@
 import requests
+import random
 from bs4 import BeautifulSoup
 
-response = requests.get('https://intrigue.dating/interesnoe/365-jelaniy-na-kajdyy-den-spisok/')
+url = 'https://intrigue.dating/interesnoe/365-jelaniy-na-kajdyy-den-spisok/'
 
-bs = BeautifulSoup(response.content.decode('utf-8'), 'html.parser')
+def parser(url):
+    response = requests.get(url)
 
-table = bs.find_all('div', attrs={'class': 'entry-content'})
+    bs = BeautifulSoup(response.content.decode('utf-8'), 'html.parser')
 
-for i in table:
-    vse = i.find_all('li')
-    for g in vse:
-        dela = g.text
-        print(dela)
+    table = bs.find_all('div', attrs={'class': 'entry-content'})
+    for i in table:
+        dela = i.find_all('li')
+        return [c.text for c in dela]
+
+list_of_del = parser(url)
+random.shuffle(list_of_del)

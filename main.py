@@ -1,6 +1,7 @@
 
 import telebot
 from telebot import types
+from parset import list_of_del
 
 bot = telebot.TeleBot('7163086368:AAFq4mlOlUu7dL7QoFT0E8EAOnjF9HiBTeE')
 
@@ -19,7 +20,8 @@ def handle_start(message):
 def handle_message(message): 
     if message.text == 'Что мне поделать?': 
         # Действия при нажатии на кнопку 1 
-        bot.reply_to(message, 'Тут будет идея') 
+        bot.reply_to(message, list_of_del[0])
+        del list_of_del[0]
     else: 
         # Действия при получении другого сообщения 
         bot.reply_to(message, 'Извини, я тебя не понимаю')
