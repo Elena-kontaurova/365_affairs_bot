@@ -2,8 +2,9 @@
 import telebot
 from telebot import types
 from parset import list_of_del
+from tok import TOKEN
 
-bot = telebot.TeleBot('7163086368:AAFq4mlOlUu7dL7QoFT0E8EAOnjF9HiBTeE')
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start']) 
 def handle_start(message): 
